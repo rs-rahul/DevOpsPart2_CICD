@@ -9,6 +9,9 @@ function App() {
         <p>
           This is a sample React Project for demonstrating CI/CD Pipeline setup.
         </p>
+	<p>
+	  Automating things can make life easier.
+	</p>
         <a
           className="App-link"
           href="https://reactjs.org"
