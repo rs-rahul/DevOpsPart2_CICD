@@ -17,7 +17,7 @@ jobs:
             cd ~/rahul-react-demo && \
             git pull origin master && \
             cd ~/ && \
-            sudo docker compose down app && \
+            sudo docker compose stop app && \
             sudo docker compose up --build -d app && \
             echo Deploy end"
 workflows:
