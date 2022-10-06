@@ -7,7 +7,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Assignment of DevOps Part 2 CI CD for ALB
+          Assignment of DevOps Part 2 CI CD for ALB. Completed :D
         </p>
 	<p>
 	  Automating things can make life easier.
