@@ -30,7 +30,6 @@ jobs:
             npm i
             npm run build
             aws s3 sync build s3://s3.rahul.bibek-mishra.com.np
-            aws cloudfront create-invalidation --distribution-id E2Y85NWZSIN3PQ --paths "/*"
             
             echo Deploy end
 workflows:
