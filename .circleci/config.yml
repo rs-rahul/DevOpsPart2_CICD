@@ -17,10 +17,10 @@ jobs:
 
             echo Start deploy for ALB
 
-            aws ecr-public get-login-password --region us-east-1 | sudo docker login --username AWS --password-stdin public.ecr.aws/o2e6u6n6
-            sudo docker build -t rahul-react-js:success .
-            sudo docker tag rahul-react-js:success public.ecr.aws/o2e6u6n6/rahul-ecr:success
-            sudo docker push public.ecr.aws/o2e6u6n6/rahul-ecr:success
+            aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/o2e6u6n6
+            docker build -t rahul-react-js:success .
+            docker tag rahul-react-js:success public.ecr.aws/o2e6u6n6/rahul-ecr:success
+            docker push public.ecr.aws/o2e6u6n6/rahul-ecr:success
             aws ecs update-service --cluster rahul-cluster --service rahul-reactjs-service --force-new-deployment
             echo Deploy end
 workflows:
