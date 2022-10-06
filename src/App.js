@@ -7,7 +7,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          This is a sample React Project for demonstrating CI/CD Pipeline setup.
+          Assignment of DevOps Part 2 CI CD for ALB
         </p>
 	<p>
 	  Automating things can make life easier.
