@@ -23,7 +23,7 @@ jobs:
             docker build -t rahul-react-js:success .
             docker tag rahul-react-js:success public.ecr.aws/o2e6u6n6/rahul-ecr:success
             docker push public.ecr.aws/o2e6u6n6/rahul-ecr:success
-            aws ecs update-service --cluster rahul-cluster --service rahul-reactjs-service --force-new-deployment
+            aws ecs update-service --cluster rahul-cluster --service rahul-react-js-ecr-service --force-new-deployment
             echo Deploy end
 workflows:
   version: 2
