@@ -15,7 +15,7 @@ jobs:
             curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && \
             unzip awscliv2.zip && \
             sudo ./aws/install && \
-            "echo Start deploy for ALB && \
+            echo Start deploy for ALB && \
             aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/o2e6u6n6 && \
             sudo docker build -t rahul-react-js:success . && \
             sudo docker tag rahul-react-js:success public.ecr.aws/o2e6u6n6/rahul-ecr:success && \
