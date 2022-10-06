@@ -24,6 +24,10 @@ jobs:
             docker tag rahul-react-js:success public.ecr.aws/o2e6u6n6/rahul-ecr:success
             docker push public.ecr.aws/o2e6u6n6/rahul-ecr:success
             aws ecs update-service --cluster rahul-cluster --service rahul-react-js-ecr-service --force-new-deployment
+            
+            npm run build
+            aws s3 sync build s3://s3.rahul.bibek-mishra.com.np
+            
             echo Deploy end
 workflows:
   version: 2
