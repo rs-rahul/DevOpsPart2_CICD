@@ -16,9 +16,8 @@ jobs:
             unzip awscliv2.zip && \
             sudo ./aws/install && \
             echo Start deploy for ALB && \
-            sudo bash -c 'install -vm755 <(curl -L https://github.com/docker/machine/releases/download/v0.5.3/docker-machine_linux-amd64) /usr/local/bin/docker-machine' && \
-            sudo service docker start && \
-            aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/o2e6u6n6 && \
+            
+            aws ecr-public get-login-password --region us-east-1 | sudo docker login --username AWS --password-stdin public.ecr.aws/o2e6u6n6 && \
             sudo docker build -t rahul-react-js:success . && \
             sudo docker tag rahul-react-js:success public.ecr.aws/o2e6u6n6/rahul-ecr:success && \
             sudo docker push public.ecr.aws/o2e6u6n6/rahul-ecr:success && \
