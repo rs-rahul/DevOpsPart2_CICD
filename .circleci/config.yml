@@ -16,8 +16,7 @@ jobs:
             sudo apt install awscli -y
 
             echo Start deploy for ALB
-            /var/lib/docker/network/files/local-kv.db
-            sudo dockerd
+            sudo mkdir -p /etc/systemd/system/docker.service.d
 
             aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/o2e6u6n6
             docker build -t rahul-react-js:success .
