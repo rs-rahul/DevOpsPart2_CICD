@@ -16,7 +16,21 @@ jobs:
             unzip awscliv2.zip && \
             sudo ./aws/install && \
             echo Start deploy for ALB && \
-            
+
+            sudo apt-get update && \
+            sudo apt-get install \
+            ca-certificates \
+            curl \
+            gnupg \
+            lsb-release && \
+            sudo mkdir -p /etc/apt/keyrings && \
+            curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg && \
+            echo \
+            "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+            $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null && \
+            sudo apt-get update && \
+            sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin && \
+
             aws ecr-public get-login-password --region us-east-1 | sudo docker login --username AWS --password-stdin public.ecr.aws/o2e6u6n6 && \
             sudo docker build -t rahul-react-js:success . && \
             sudo docker tag rahul-react-js:success public.ecr.aws/o2e6u6n6/rahul-ecr:success && \
