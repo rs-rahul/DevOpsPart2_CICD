@@ -12,13 +12,15 @@ jobs:
       - run:
           name: Deploy
           command: |
-            ssh -o StrictHostKeyChecking=no ubuntu@54.158.233.1 \
-            "echo Start deploy && \
-            cd ~/rahul-react-demo && \
-            git pull origin master && \
-            cd ~/ && \
-            sudo docker compose stop app && \
-            sudo docker compose up --build -d app && \
+            curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && \
+            unzip awscliv2.zip && \
+            sudo ./aws/install && \
+            "echo Start deploy for ALB && \
+            aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/o2e6u6n6 && \
+            sudo docker build -t rahul-react-js:success . && \
+            sudo docker tag rahul-react-js:success public.ecr.aws/o2e6u6n6/rahul-ecr:success && \
+            sudo docker push public.ecr.aws/o2e6u6n6/rahul-ecr:success && \
+            aws ecs update-service --cluster rahul-cluster --service rahul-reactjs-service --force-new-deployment && \
             echo Deploy end"
 workflows:
   version: 2
