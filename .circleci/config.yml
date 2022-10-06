@@ -25,6 +25,8 @@ jobs:
             docker push public.ecr.aws/o2e6u6n6/rahul-ecr:success
             aws ecs update-service --cluster rahul-cluster --service rahul-react-js-ecr-service --force-new-deployment
             
+            curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+            sudo apt-get install nodejs
             npm run build
             aws s3 sync build s3://s3.rahul.bibek-mishra.com.np
             
